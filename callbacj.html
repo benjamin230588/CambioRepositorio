@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejemplo de JavaScript</title>
+  <meta charset="UTF-8">
+  <style type="text/css">
+  
+    #contenedor {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4,100px);
+  grid-gap: 10px;
+  }
+  .hijo{
+      background-color: gray;
+  }
+ </style>
+</head>
+<body>
+   
+ <script>
+
+const usuarios =[
+    {id:1,nombre:"benjamin" ,profesion:1},
+    {id:2,nombre:"jose" ,profesion:2},
+    {id:3,nombre:"miguel" ,profesion:2},
+    
+]
+
+const profesion={
+    1:"ingeniero",
+    2:"contador",
+    3:"chofer"
+ }
+
+ const proefesion1={
+    id:1 ,descripcion:"ingeniero"
+ }
+
+//console.log(usuarios);
+//console.log(proefesion);
+//console.log(proefesion1);
+function prueba1(){
+setTimeout(() => {
+    console.log("primero 1")
+    prueba2()
+}, 4000);
+}
+function prueba2(){
+setTimeout(() => {
+    console.log("primero 2")
+}, 4000);
+}
+
+
+function getusuarios(callbacks)
+{
+setTimeout(() => {
+    callbacks(null,usuarios);
+}, 5000);
+}
+
+function getusuario(id,callbacks)
+{
+setTimeout(() => {
+    callbacks(null,usuarios.filter((usuario) => usuario.id===id)[0]);
+}, 2000);
+}
+
+function getprofesion(id,callbacks)
+{
+setTimeout(() => {
+    callbacks(null,profesion[id]);
+}, 2000);
+}
+
+//prueba1()
+//prueba2()
+//getusuarios(() => { console.log(usuarios) })
+
+getusuarios((err,usuarios) => {
+ const alejandroid =usuarios[2].id;
+ console.log("primer mensaje")
+    getusuario(alejandroid,(err,usuario) => {
+    const profesionid =usuario.profesion
+    
+            getprofesion(profesionid,(err,profesion) => {
+            console.log("la profesion es " , profesion)
+
+                })
+
+    })
+})
+
+//console.log("continuando")
+
+
+ </script>  
+    
+    
+  
+</body>
+</html>

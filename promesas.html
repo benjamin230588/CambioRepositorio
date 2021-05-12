@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejemplo de JavaScript</title>
+  <meta charset="UTF-8">
+ <style type="text/css">
+  
+ </style> 
+</head>
+<body>
+<script>
+function nompromesa()
+{
+    return new Promise((exito,error) => {
+        console.log("prueba de promesa")
+    let numero=12;
+    if(numero===12){
+        exito("hola benjamin")
+    }
+    else
+    {
+        error("error")
+    }
+    
+
+})
+}
+
+/*const promesa = new Promise((exito,error) => {
+    let numero=2;
+    if(numero===12){
+        exito("hola benjamin")
+    }
+    else
+    {
+        error("error")
+    }
+    
+
+})
+*/
+
+nompromesa().then((mensaje) => {
+    console.log(mensaje)
+}).catch((error) => {
+    console.log(error)
+})
+</script>
+
+
+
+</body>
+</html>
